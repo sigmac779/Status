@@ -1,9 +1,6 @@
 Subgraph code : https://github.com/sigmac779/Status/tree/main/getfarm
   
 
-## Introduction 
-
-GetMOney is a revolutionary platform that allows users to monetize their work , resell work, and anyone can share their experiences in a dedicated dashboard. This platform eliminates intermediaries, empowering users to manage their WORK seamlessly.
 
 ## Contract Info ->  The  smart contract  is deployed on scroll sepolia
 
