@@ -1,0 +1,62 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: NFTMarketplace
+    network: scroll-sepolia
+    source:
+      address: "0x980C3fFb37CD7C92E3CebbE1BB69Bc5E3dCa0419"
+      abi: NFTMarketplace
+      startBlock: 5569074
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - BatchMetadataUpdate
+        - ChaiBought
+        - Donation
+        - ListingPriceUpdated
+        - MarketItemCreated
+        - MarketSale
+        - MetadataUpdate
+        - TokenItem
+        - TokenResold
+        - Transfer
+        - _updateData
+      abis:
+        - name: NFTMarketplace
+          file: ./abis/NFTMarketplace.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: BatchMetadataUpdate(uint256,uint256)
+          handler: handleBatchMetadataUpdate
+        - event: ChaiBought(string,string,uint256,address,uint256)
+          handler: handleChaiBought
+        - event: Donation(indexed address,string,string,uint256,uint256)
+          handler: handleDonation
+        - event: ListingPriceUpdated(uint256)
+          handler: handleListingPriceUpdated
+        - event: MarketItemCreated(indexed uint256,address,address,uint256,bool)
+          handler: handleMarketItemCreated
+        - event: MarketSale(indexed uint256,address,address,uint256)
+          handler: handleMarketSale
+        - event: MetadataUpdate(uint256)
+          handler: handleMetadataUpdate
+        - event: TokenItem(string,uint256,uint256)
+          handler: handleTokenItem
+        - event: TokenResold(indexed uint256,address,address,uint256)
+          handler: handleTokenResold
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: _updateData(string,string,uint256,address)
+          handler: handle_updateData
+      file: ./src/nft-marketplace.ts
